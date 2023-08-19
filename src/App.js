@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import MoleContainer from './MoleContainer';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+    let [score, setScore] = useState(0)
+
+    const createMoleHill = () => {
+        let hills = []
+        for (let i = 0; i < 9; i++) {
+            hills.push(
+                <MoleContainer
+                
+                setScore={setScore}
+                score={score} />
+            )
+        }
+    
+        return (
+            <div>
+                {hills}
+            </div>
+        )
+    }
+
+    return (
+        <div className="App">
+          <center>
+            <h1 style={{backgroundColor: "lightblue"}}>React-a-Mole!</h1>
+            <p>Add a little style!</p>
+            {score}
+            {createMoleHill()}
+            </center>
+        </div>
+    )
 }
 
-export default App;
+export default App
+
